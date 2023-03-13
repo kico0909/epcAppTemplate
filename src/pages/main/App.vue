@@ -29,15 +29,6 @@ const MenuData = ref([
     key: 'menu1',
     router: '/menu1',
     children: [],
-  },
-  {
-    id: '2',
-    parentId: '-1',
-    icon: 'iconauthorization',
-    title: '菜单1',
-    key: 'menu1',
-    router: '/menu1',
-    children: [],
   }
 ])
 
