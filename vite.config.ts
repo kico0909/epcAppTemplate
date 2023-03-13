@@ -40,6 +40,14 @@ export default ({ mode, command }) => {
       },
       extensions: ['.js', '.ts', '.jsx', '.tsx', '.json', '.vue'] // 忽略.vue后缀
     },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "cctc-epc/theme/index.scss" as *;`
+          // additionalData: `@use "@a/css/index.scss" as *;`
+        }
+      }
+    },
 
     build: {
       target: 'esnext',
