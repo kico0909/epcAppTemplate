@@ -1,9 +1,50 @@
 <template>
-  <router-view />
+  <epc-main-box 
+    :level="1"
+    jwt="1630826193724661760"
+    title="中国建科-EPC应用XXX"
+    @user-info="FuncPullUserInfo"
+    ref="mf"
+  >
+    <template #titleExpand>EPC应用</template>
+    <template #titleFold>EPC</template>
+    <template #menu="{expand}">
+      <epcMenu v-model:data="MenuData" :state="expand" @handleMenuClick="$router.push({path: $event.router})"></epcMenu>
+    </template>
+    <template #default>
+      <router-view />
+    </template>
+  </epc-main-box>
 </template>
 
 <script lang="ts" setup>
+import {ref} from 'vue'
 
+const MenuData = ref([
+{
+    id: '1',
+    parentId: '-1',
+    icon: 'iconauthorization',
+    title: '菜单1',
+    key: 'menu1',
+    router: '/menu1',
+    children: [],
+  },
+  {
+    id: '2',
+    parentId: '-1',
+    icon: 'iconauthorization',
+    title: '菜单1',
+    key: 'menu1',
+    router: '/menu1',
+    children: [],
+  }
+])
+
+const mf = ref()
+function FuncPullUserInfo(d: any) {
+  console.log('↓↓↓↓↓↓↓↓↓↓ user-info ↓↓↓↓↓↓↓↓↓↓\n', d, '\n↑↑↑↑↑↑↑↑↑↑ END ↑↑↑↑↑↑↑↑↑↑');
+}
 </script>
 
 <style lang="less">

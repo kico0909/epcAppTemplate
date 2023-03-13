@@ -1,17 +1,10 @@
-/*
- * @Author: ChunkDing
- * @Date: 2022-06-20 12:49:31
- * @Description:
- * Copyright (c) 2022 by ChunkDing, All Rights Reserved.
- */
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import copy from 'rollup-plugin-copy'
 import VueSetupExtend from 'vite-plugin-vue-setup-extend' // setup name 增强
 import { resolve, join } from 'path'
 import { deleteall } from './util/util'
-
 import { createStyleImportPlugin, VxeTableResolve } from 'vite-plugin-style-import'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 deleteall('./dist') // 打包前先移除dist文件夹
 
@@ -26,7 +19,8 @@ export default ({ mode, command }) => {
 
     plugins: [
       vue(),
-      VueSetupExtend()
+      VueSetupExtend(),
+      ElementPlusResolver({ importStyle: 'sass' })
     ],
 
     server: {
