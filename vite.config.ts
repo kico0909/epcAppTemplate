@@ -1,4 +1,4 @@
-import { defineConfig, loadEnv, splitVendorChunkPlugin } from 'vite'
+import { defineConfig, loadEnv, splitVendorChunkPlugin, Plugin } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import VueSetupExtend from 'vite-plugin-vue-setup-extend' // setup name 增强
 import { resolve, join } from 'path'
@@ -23,22 +23,7 @@ export default ({ mode, command }) => {
       vue(),
       VueSetupExtend(),
       splitVendorChunkPlugin(),
-      ElementPlusResolver({ importStyle: 'sass' }),
-      // createHtmlPlugin({
-      //   minify: true,
-      //   pages: [
-      //     {
-      //       entry: '/main/main.ts',
-      //       filename: 'index.html',
-      //       template: '/main/index.html',
-      //       injectOptions: {
-      //         data: {
-      //           title: 666
-      //         }
-      //       }
-      //     }
-      //   ]
-      // })
+      ElementPlusResolver({ importStyle: 'sass' }) as unknown as Plugin,
     ],
 
     server: {
