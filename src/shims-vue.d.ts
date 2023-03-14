@@ -10,4 +10,6 @@ declare module '*.vue' {
 
 interface ImportMetaEnv {
   // 环境变量声明
+  VITE_APP_service: string // epc 业务组件 远程请求的域信息
+  VITE_APP_token: string // epc 业务组件 远程请求的认证密钥
 }

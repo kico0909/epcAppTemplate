@@ -1,15 +1,14 @@
 <template>
   <epc-main-box 
     :level="1"
-    jwt="1630826193724661760"
     title="中国建科-EPC应用XXX"
     @user-info="FuncPullUserInfo"
-    ref="mf"
+    ref="RefObj"
   >
     <template #titleExpand>EPC应用</template>
     <template #titleFold>EPC</template>
     <template #menu="{expand}">
-      <epcMenu v-model:data="MenuData" :state="expand" @handleMenuClick="$router.push({path: $event.router})"></epcMenu>
+      <epcMenu v-model:data="menuData" :state="expand" @handle-menu-click="$router.push({path: $event.router})"></epcMenu>
     </template>
     <template #default>
       <router-view />
@@ -19,22 +18,17 @@
 
 <script lang="ts" setup>
 import {ref} from 'vue'
+import menuData from './menu';
 
-const MenuData = ref([
-{
-    id: '1',
-    parentId: '-1',
-    icon: 'iconauthorization',
-    title: '菜单1',
-    key: 'menu1',
-    router: '/menu1',
-    children: [],
-  }
-])
+const RefObj = ref()
 
-const mf = ref()
+// 主动刷新用户信息
+function FuncRefreshUserInfo() {
+  RefObj.value.refresh()
+}
+
 function FuncPullUserInfo(d: any) {
-  console.log('↓↓↓↓↓↓↓↓↓↓ user-info ↓↓↓↓↓↓↓↓↓↓\n', d, '\n↑↑↑↑↑↑↑↑↑↑ END ↑↑↑↑↑↑↑↑↑↑');
+  console.log('↓↓↓↓↓↓↓↓↓↓ epc-main-box 组件在用户初始化完成后,将主动抛出用户信息供开发者使用 ↓↓↓↓↓↓↓↓↓↓\n', d, '\n↑↑↑↑↑↑↑↑↑↑ END ↑↑↑↑↑↑↑↑↑↑');
 }
 </script>
 
