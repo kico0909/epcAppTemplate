@@ -1,7 +1,14 @@
 <template>
-  <div class="m-b-body">
-    这是EPC子应用的一个视图
-  </div>
+  <epc-frame-box>
+    <template #header>
+      <epc-sub-title-show>
+        <el-breadcrumb-item>epc子应用</el-breadcrumb-item>
+      </epc-sub-title-show>
+    </template>
+    <template #body>
+      应用内容区 - 自行脑补
+    </template>
+  </epc-frame-box>
 </template>
 
 <script lang="ts" setup>

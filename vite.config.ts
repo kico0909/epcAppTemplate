@@ -1,10 +1,12 @@
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig, loadEnv, splitVendorChunkPlugin } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import VueSetupExtend from 'vite-plugin-vue-setup-extend' // setup name 增强
 import { resolve, join } from 'path'
 import { deleteall } from './util/util'
 import { createStyleImportPlugin, VxeTableResolve } from 'vite-plugin-style-import'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import terser from '@rollup/plugin-terser'
+import { createHtmlPlugin } from 'vite-plugin-html'
 
 deleteall('./dist') // 打包前先移除dist文件夹
 
@@ -20,14 +22,30 @@ export default ({ mode, command }) => {
     plugins: [
       vue(),
       VueSetupExtend(),
-      ElementPlusResolver({ importStyle: 'sass' })
+      splitVendorChunkPlugin(),
+      ElementPlusResolver({ importStyle: 'sass' }),
+      // createHtmlPlugin({
+      //   minify: true,
+      //   pages: [
+      //     {
+      //       entry: '/main/main.ts',
+      //       filename: 'index.html',
+      //       template: '/main/index.html',
+      //       injectOptions: {
+      //         data: {
+      //           title: 666
+      //         }
+      //       }
+      //     }
+      //   ]
+      // })
     ],
 
     server: {
       host: '0.0.0.0',
       port: 3000,
       strictPort: false,
-      open: '/main/'
+      open: '/index.html'
     },
 
     resolve: {
@@ -40,6 +58,7 @@ export default ({ mode, command }) => {
       },
       extensions: ['.js', '.ts', '.jsx', '.tsx', '.json', '.vue'] // 忽略.vue后缀
     },
+
     css: {
       preprocessorOptions: {
         scss: {
@@ -59,7 +78,6 @@ export default ({ mode, command }) => {
       rollupOptions: {
         input: {
           main: resolve(__dirname, 'src/pages/main/index.html'),
-          pop: resolve(__dirname, 'src/pages/pop/index.html'),
         },
         output: {
           chunkFileNames: 'static/js/[name]-[hash].js',
@@ -69,7 +87,8 @@ export default ({ mode, command }) => {
         plugins: [
           createStyleImportPlugin({
             resolves: [VxeTableResolve()]
-          })
+          }),
+          terser()
         ]
       }
     }
