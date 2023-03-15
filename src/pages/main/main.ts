@@ -3,7 +3,6 @@ import App from './App.vue'
 import router from './router'
 import elementPlus from 'element-plus'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
-import 'element-plus/theme-chalk/src/index.scss';
 import '@/assets/css/iconfont.css'
 import '@/assets/css/reset.css'
 import ckui from 'chunk-ui'

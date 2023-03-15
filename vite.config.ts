@@ -6,7 +6,6 @@ import { deleteall } from './util/util'
 import { createStyleImportPlugin, VxeTableResolve } from 'vite-plugin-style-import'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import terser from '@rollup/plugin-terser'
-import { createHtmlPlugin } from 'vite-plugin-html'
 
 deleteall('./dist') // 打包前先移除dist文件夹
 
@@ -23,7 +22,6 @@ export default ({ mode, command }) => {
       vue(),
       VueSetupExtend(),
       splitVendorChunkPlugin(),
-      ElementPlusResolver({ importStyle: 'sass' }) as unknown as Plugin,
     ],
 
     server: {
@@ -42,15 +40,6 @@ export default ({ mode, command }) => {
         '@s': join(__dirname, 'src/store'),
       },
       extensions: ['.js', '.ts', '.jsx', '.tsx', '.json', '.vue'] // 忽略.vue后缀
-    },
-
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: `@use "cctc-epc/theme/index.scss" as *;`
-          // additionalData: `@use "@a/css/index.scss" as *;`
-        }
-      }
     },
 
     build: {
