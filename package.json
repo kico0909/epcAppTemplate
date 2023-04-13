@@ -11,7 +11,7 @@
     "element-plus": "2.3.0",
     "@element-plus/icons-vue": "^2.0.4",
     "chunk-ui": "^1.0.20",
-    "cctc-epc": "^1.1.34",
+    "cctc-epc": "^1.2.40",
     "axios": "^0.27.2",
     "dayjs": "^1.11.5",
     "js-base64": "^3.7.2",

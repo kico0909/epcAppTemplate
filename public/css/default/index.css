@@ -3,7 +3,7 @@
 :root {
   --el-color-white: #ffffff;
   --el-color-black: #000000;
-  --el-color-primary-rgb: 63, 176, 210;
+  --el-color-primary-rgb: 6, 161, 187;
   --el-color-success-rgb: 0, 190, 113;
   --el-color-warning-rgb: 255, 174, 0;
   --el-color-danger-rgb: 244, 48, 48;
@@ -45,13 +45,13 @@
   color-scheme: light;
   --el-color-white: #ffffff;
   --el-color-black: #000000;
-  --el-color-primary: #3fb0d2;
-  --el-color-primary-light-3: #79c8e0;
-  --el-color-primary-light-5: #9fd8e9;
-  --el-color-primary-light-7: #c5e7f2;
-  --el-color-primary-light-8: #d9eff6;
-  --el-color-primary-light-9: #ecf7fb;
-  --el-color-primary-dark-2: #328da8;
+  --el-color-primary: #06A1BB;
+  --el-color-primary-light-3: #51bdcf;
+  --el-color-primary-light-5: #83d0dd;
+  --el-color-primary-light-7: #b4e3eb;
+  --el-color-primary-light-8: #cdecf1;
+  --el-color-primary-light-9: #e6f6f8;
+  --el-color-primary-dark-2: #058196;
   --el-color-success: #00be71;
   --el-color-success-light-3: #4dd29c;
   --el-color-success-light-5: #80dfb8;
